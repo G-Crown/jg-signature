@@ -1,5 +1,8 @@
 import "./globals.css";
 
+import { CartProvider }
+from "@/context/CartContext";
+
 import { Inter, Cormorant_Garamond } from "next/font/google";
 
 import Navbar from "@/components/Navbar";

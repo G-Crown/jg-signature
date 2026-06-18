@@ -1,1 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
+:root {
+  --ivory: #F9F6F0;
+  --beige: #E8E0D5;
+  --charcoal: #1A1A1A;
+  --black: #0D0D0D;
+  --gold: #C9A96E;
+  --gold-light: #E2C99A;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--ivory);
+  color: var(--charcoal);
+  overflow-x: hidden;
+}
+
+.container-custom {
+  max-width: 1400px;
+  margin: auto;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+.heading-font {
+  font-family: var(--font-heading);
+}
+
+.body-font {
+  font-family: var(--font-body);
+}
+
+.gold-text {
+  color: var(--gold);
+}
+
+.btn-primary {
+  @apply px-8 py-4 uppercase tracking-[0.2em] text-sm font-medium transition-all;
+  background: var(--gold);
+  color: black;
+}
+
+.btn-primary:hover {
+  background: var(--gold-light);
+}
+
+.section-padding {
+  @apply py-24 md:py-32;
+}

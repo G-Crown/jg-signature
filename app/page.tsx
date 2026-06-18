@@ -40,15 +40,10 @@ export default async function HomePage() {
                 <ProductCard
                   key={node.id}
                   title={node.title}
-                  image={
-                    node.featuredImage?.url ||
-                    "/images/placeholder.jpg"
-                  }
-                  price={
-                    node.priceRange
-                      .minVariantPrice.amount
-                  }
-                />
+                  image={node.featuredImage?.url} 
+                  price={node.priceRange.minVariantPrice.amount} 
+                  handle={node.handle}
+                  />
               )
             )}
 

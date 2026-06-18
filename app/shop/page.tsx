@@ -19,18 +19,13 @@ export default async function ShopPage() {
 
           {products.map(
             ({ node }: any) => (
-              <ProductCard
-                key={node.id}
-                title={node.title}
-                image={
-                  node.featuredImage?.url ||
-                  "/images/placeholder.jpg"
-                }
-                price={
-                  node.priceRange
-                    .minVariantPrice.amount
-                }
-              />
+             <ProductCard 
+               key={node.id} 
+               title={node.title} 
+               image={node.featuredImage?.url} 
+               price={node.priceRange.minVariantPrice.amount} 
+               handle={node.handle} 
+               />
             )
           )}
 

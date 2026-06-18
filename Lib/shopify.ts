@@ -37,30 +37,55 @@ export async function shopifyFetch({
   return result.json();
 }
 
-export async function getProducts() {
+export async function getProduct(handle: string) {
   const query = `
-    {
-      products(first: 20) {
+  query Product($handle: String!) {
+    product(handle: $handle) {
+      id
+      title
+      handle
+      description
+
+      featuredImage {
+        url
+      }
+
+      images(first: 20) {
+        edges {
+          node {
+            url
+          }
+        }
+      }
+
+      variants(first: 50) {
         edges {
           node {
             id
             title
-            handle
 
-            featuredImage {
-              url
+            price {
+              amount
             }
 
-            priceRange {
-              minVariantPrice {
-                amount
-              }
+            selectedOptions {
+              name
+              value
             }
           }
         }
       }
     }
-  `;
+  }
+`;
+
+  const response = await shopifyFetch({
+    query,
+    variables: { handle }
+  });
+
+  return response.data.product;
+}
 
   const response =
     await shopifyFetch({ query });
@@ -68,24 +93,41 @@ export async function getProducts() {
   return response.data.products.edges;
 }
 
-export async function getCollections() {
+export async function getCollection(
+  handle: string
+) {
   const query = `
-    {
-      collections(first: 20) {
-        edges {
-          node {
+  query Collection($handle:String!){
+    collection(handle:$handle){
+      title
+
+      products(first:50){
+        edges{
+          node{
             id
             title
             handle
-            description
+
+            featuredImage{
+              url
+            }
+
+            priceRange{
+              minVariantPrice{
+                amount
+              }
+            }
           }
         }
       }
     }
-  `;
+  }
+`;
 
-  const response =
-    await shopifyFetch({ query });
+  const response = await shopifyFetch({
+    query,
+    variables: { handle }
+  });
 
-  return response.data.collections.edges;
+  return response.data.collection;
 }

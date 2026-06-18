@@ -44,7 +44,7 @@ export default async function CollectionPage({
                     .minVariantPrice
                     .amount
                 }
-                handle={node.handle]
+                handle={node.handle}
               />
             )
           )}
